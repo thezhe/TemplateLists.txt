@@ -1,0 +1,34 @@
+name: "CMake Action"
+author: "Zhe Deng"
+description: "CMake/CTest/Ninja build, test, and install. Optionally uploads install as artifact."
+inputs:
+    upload-artifact:
+        description: "Upload install as artifact."
+        default: false
+    cmake-build-directory:
+        description: "Directory to run CMake/CTest in."
+        default: "${{ github.action_path }}/build"
+    cmake-install-prefix:
+        description: "Directory to install to."
+        default: "${{ github.action_path }}/build/install"
+runs:
+    using: "composite"
+    steps:
+        - name: Install Ninja
+          run: pip install -y ninja
+        - name: CMake
+          run: |
+            mkdir ${{inputs.cmake-build-directory}} && cd ${{inputs.cmake-build-directory}}
+            cmake -DCMAKE_INSTALL_PREFIX=${{inputs.cmake-install-prefix}} -DCMAKE_BUILD_TYPE=Release -G Ninja ..
+            cmake --build .
+            ctest
+            cmake --install . --strip
+        - name: Upload Artifact
+          if: ${{inputs.upload-artifact}}
+          uses: actions/upload-artifact@v3.1.3
+          with:
+            name: ${{github.event.repository.name}}_${{github.ref_name}}_${{runner.os}}
+            path: ${{inputs.cmake-install-prefix}}
+branding:
+    icon: "settings"
+    color: "green"

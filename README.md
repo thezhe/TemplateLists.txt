@@ -1,2 +1,3 @@
 # cmake-action
-A GitHub Action wrapper for CMake projects.
+
+A GitHub Action that runs CMake/CTest and optionally uploads install artifacts.

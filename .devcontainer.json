@@ -1,0 +1,9 @@
+// Overkill, but includes dev environment for Actions and Markdown.
+{
+    "name": "${localWorkspaceFolderBasename}",
+    "image": "ghcr.io/thezhe/devimagepp",
+    "runArgs": [
+        "-v",
+        "${localEnv:HOME}/.ssh/:/root/.ssh"
+    ]
+}
