@@ -1,34 +1,26 @@
 name: "CMake Action"
 author: "Zhe Deng"
-description: "CMake/CTest/Ninja build, test, and install. Optionally uploads install as artifact."
-inputs:
-    upload-artifact:
-        description: "Upload install as artifact."
-        default: false
-    cmake-build-directory:
-        description: "Directory to run CMake/CTest in."
-        default: "${{ github.action_path }}/build"
-    cmake-install-prefix:
-        description: "Directory to install to."
-        default: "${{ github.action_path }}/build/install"
+description: "CMake/CTest/Ninja build in release mode, test, and install."
+outputs:
+    install-directory:
+        description: "Directory containing the install."
+        value: ${{steps.CMake.outputs.install-directory}}
 runs:
     using: "composite"
     steps:
         - name: Install Ninja
           run: pip install -y ninja
         - name: CMake
+          env:
+            CMAKE_BUILD_DIRECTORY: ${{ github.workspace }}/build
+            CMAKE_INSTALL_DIRECTORY: ${{ github.workspace }}/build/install
           run: |
-            mkdir ${{inputs.cmake-build-directory}} && cd ${{inputs.cmake-build-directory}}
-            cmake -DCMAKE_INSTALL_PREFIX=${{inputs.cmake-install-prefix}} -DCMAKE_BUILD_TYPE=Release -G Ninja ..
+            mkdir ${{env.CMAKE_BUILD_DIRECTORY}} && cd ${{env.CMAKE_BUILD_DIRECTORY}}
+            cmake -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIRECTORY}} -DCMAKE_BUILD_TYPE=Release -G Ninja ..
             cmake --build .
             ctest
             cmake --install . --strip
-        - name: Upload Artifact
-          if: ${{inputs.upload-artifact}}
-          uses: actions/upload-artifact@v3.1.3
-          with:
-            name: ${{github.event.repository.name}}_${{github.ref_name}}_${{runner.os}}
-            path: ${{inputs.cmake-install-prefix}}
+            echo "install-directory=${{env.CMAKE_INSTALL_DIRECTORY}}" >> $GITHUB_OUTPUT
 branding:
     icon: "settings"
     color: "green"
