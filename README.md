@@ -1,3 +1,3 @@
 # cmake-action
 
-A GitHub Action that runs CMake/CTest and optionally uploads install artifacts.
+A GitHub Action that builds, tests, and installs CMake projects.
