@@ -18,11 +18,10 @@ runs:
         CMAKE_BUILD_DIRECTORY: ${{github.workspace}}/build
         CMAKE_INSTALL_DIRECTORY: ${{github.workspace}}/build/install
       run: |
-        mkdir ${{env.CMAKE_BUILD_DIRECTORY}} && cd ${{env.CMAKE_BUILD_DIRECTORY}}
-        cmake -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIRECTORY}} -DCMAKE_BUILD_TYPE=Release -G Ninja ..
-        cmake --build .
-        ctest
-        cmake --install . --strip
+        cmake -B ${{env.CMAKE_BUILD_DIRECTORY}} -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIRECTORY}} -DCMAKE_BUILD_TYPE=Release -G Ninja ..
+        cmake --build ${{env.CMAKE_BUILD_DIRECTORY}}
+        ctest --test-dir ${{env.CMAKE_BUILD_DIRECTORY}}
+        cmake --install ${{env.CMAKE_BUILD_DIRECTORY}} --strip
         echo "install-directory=${{env.CMAKE_INSTALL_DIRECTORY}}" >> $GITHUB_OUTPUT
 branding:
   icon: "settings"
