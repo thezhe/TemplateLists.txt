@@ -10,7 +10,7 @@ runs:
   steps:
     - name: Install Ninja
       shell: bash
-      run: pip install -y ninja
+      run: pip install --no-cache-dir ninja
     - name: CMake
       id: cmake
       shell: bash
