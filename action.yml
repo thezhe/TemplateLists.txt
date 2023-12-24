@@ -4,7 +4,7 @@ description: "CMake/CTest/Ninja release mode build, test, and install."
 outputs:
   install-directory:
     description: "Directory containing the install."
-    value: ${{steps.CMake.outputs.install-directory}}
+    value: ${{steps.cmake.outputs.install-directory}}
 runs:
   using: "composite"
   steps:
@@ -12,6 +12,7 @@ runs:
       shell: bash
       run: pip install -y ninja
     - name: CMake
+      id: cmake
       shell: bash
       env:
         CMAKE_BUILD_DIRECTORY: ${{github.workspace}}/build
