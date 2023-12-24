@@ -15,10 +15,11 @@ runs:
       id: cmake
       shell: bash
       env:
+        #CMAKE_SOURCE_DIRECTORY: ${{github.workspace}} TODO parametrize
         CMAKE_BUILD_DIRECTORY: ${{github.workspace}}/build
         CMAKE_INSTALL_DIRECTORY: ${{github.workspace}}/build/install
       run: |
-        cmake -B ${{env.CMAKE_BUILD_DIRECTORY}} -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIRECTORY}} -DCMAKE_BUILD_TYPE=Release -G Ninja ..
+        cmake -B ${{env.CMAKE_BUILD_DIRECTORY}} -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIRECTORY}} -DCMAKE_BUILD_TYPE=Release -G Ninja .
         cmake --build ${{env.CMAKE_BUILD_DIRECTORY}}
         ctest --test-dir ${{env.CMAKE_BUILD_DIRECTORY}}
         cmake --install ${{env.CMAKE_BUILD_DIRECTORY}} --strip
