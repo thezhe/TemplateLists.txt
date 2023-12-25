@@ -1,6 +1,6 @@
 name: 'CMake Install'
 author: 'Zhe Deng'
-description: 'CMake/CTest/Ninja release mode build, test, and install.'
+description: 'CMake/CTest release mode build, test, and install.'
 outputs:
   install-directory:
     description: 'Directory containing the install.'
@@ -8,9 +8,6 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: Install Ninja
-      shell: bash
-      run: pip install --no-cache-dir ninja
     - name: CMake
       id: cmake
       shell: bash
@@ -19,7 +16,7 @@ runs:
         CMAKE_BUILD_DIR: '${{github.workspace}}/build'
         CMAKE_INSTALL_DIR: '${{github.workspace}}/build/install'
       run: |
-        cmake -B ${{env.CMAKE_BUILD_DIR}} -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIR}} -DCMAKE_BUILD_TYPE=Release -G Ninja '${{github.workspace}}'
+        cmake -B ${{env.CMAKE_BUILD_DIR}} -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIR}} -DCMAKE_BUILD_TYPE=Release '${{github.workspace}}'
         cmake --build ${{env.CMAKE_BUILD_DIR}}
         ctest --test-dir ${{env.CMAKE_BUILD_DIR}}
         cmake --install ${{env.CMAKE_BUILD_DIR}} --strip
