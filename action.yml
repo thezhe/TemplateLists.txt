@@ -1,12 +1,12 @@
-name: "CMake Install"
-author: "Zhe Deng"
-description: "CMake/CTest/Ninja release mode build, test, and install."
+name: 'CMake Install'
+author: 'Zhe Deng'
+description: 'CMake/CTest/Ninja release mode build, test, and install.'
 outputs:
   install-directory:
-    description: "Directory containing the install."
+    description: 'Directory containing the install.'
     value: ${{steps.cmake.outputs.install-directory}}
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Install Ninja
       shell: bash
@@ -16,8 +16,8 @@ runs:
       shell: bash
       env:
         #CMAKE_SOURCE_DIRECTORY: ${{github.workspace}} TODO parametrize
-        CMAKE_BUILD_DIRECTORY: ${{github.workspace}}/build
-        CMAKE_INSTALL_DIRECTORY: ${{github.workspace}}/build/install
+        RELATIVE_BUILD_DIR: '${{github.workspace}}/build'
+        RELATIVE_INSTALL_DIR: '${{github.workspace}}/build/install'
       run: |
         cmake -B ${{env.CMAKE_BUILD_DIRECTORY}} -DCMAKE_INSTALL_PREFIX=${{env.CMAKE_INSTALL_DIRECTORY}} -DCMAKE_BUILD_TYPE=Release -G Ninja .
         cmake --build ${{env.CMAKE_BUILD_DIRECTORY}}
@@ -25,5 +25,5 @@ runs:
         cmake --install ${{env.CMAKE_BUILD_DIRECTORY}} --strip
         echo "install-directory=${{env.CMAKE_INSTALL_DIRECTORY}}" >> $GITHUB_OUTPUT
 branding:
-  icon: "settings"
-  color: "green"
+  icon: 'settings'
+  color: 'green'
