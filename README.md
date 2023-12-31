@@ -1,3 +1,3 @@
-# cmake-action
+# script-action-template
 
-A GitHub Action that builds, tests, and installs CMake projects.
+GitHub Actions wrapper of a script that runs in both Bash and PowerShell.
