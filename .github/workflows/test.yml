@@ -20,7 +20,7 @@ jobs:
         run: ../script.ps1
         working-directory: test
       - name: Test script.ps1 release
-        run: (Invoke-WebRequest 'https://github.com/thezhe/script-template/releases/download/v1.0.1/script.ps1' || wget 'https://github.com/thezhe/script-template/releases/download/v1.0.1/script.ps1') && (chmod +x ./script.ps1 || 'true') && ./script.ps1 && rm script.ps1
+        run: (Invoke-WebRequest 'https://github.com/thezhe/script-template/releases/download/v1.0.1/script.ps1' || wget 'https://github.com/thezhe/script-template/releases/download/v1.0.1/script.ps1' -OutFile script.ps1) && (chmod +x ./script.ps1 || 'true') && ./script.ps1 && rm script.ps1
         working-directory: test
   release:
     if: ${{github.ref_type == 'tag'}}
