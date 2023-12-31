@@ -28,6 +28,6 @@ jobs:
       contents: write
     steps:
       - name: Release Tag
-        run: gh release create --notes-from-tag
+        run: gh release create --notes-from-tag *.ps1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
