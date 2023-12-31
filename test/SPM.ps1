@@ -16,7 +16,7 @@ function bash-impl() {
 "exit"
 
 # PowerShell
-$BASE_NAME=Split-Path $Env:SPM_URL -Leaf
-Invoke-WebRequest $Env:SPM_URL -OutFile $BASE_NAME
-./$BASE_NAME
-rm $BASE_NAME
+$baseName = Split-Path $Env:SPM_URL -Leaf
+Invoke-WebRequest $Env:SPM_URL -OutFile $baseName
+./$baseName
+rm $baseName
