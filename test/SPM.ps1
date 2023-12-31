@@ -5,8 +5,9 @@
 
 # Bash
 function bash-impl() {
+    echo "${SPM_URL}"
     BASE_NAME="${SPM_URL##*/}"
-    wget "$SPM_URL"
+    wget "${SPM_URL}"
     chmod +x "${BASE_NAME}"
     ./${BASE_NAME}
     rm ${BASE_NAME}
