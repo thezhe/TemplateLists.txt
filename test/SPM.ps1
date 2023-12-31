@@ -18,5 +18,5 @@ function bash-impl() {
 # PowerShell
 $baseName = Split-Path $Env:SPM_URL -Leaf
 Invoke-WebRequest $Env:SPM_URL -OutFile $baseName
-./$baseName
+Invoke-Expression "./$baseName"
 rm $baseName
