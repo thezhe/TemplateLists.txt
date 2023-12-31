@@ -23,7 +23,7 @@ jobs:
         run: ./SPM.ps1
         working-directory: test
         env:
-          SCRIPT_URL: 'https://github.com/thezhe/script-template/releases/download/v1.0.1/script.ps1'
+          SPM_URL: 'https://github.com/thezhe/script-template/releases/download/v1.0.1/script.ps1'
   release:
     if: ${{github.ref_type == 'tag'}}
     needs: build
