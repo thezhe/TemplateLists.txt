@@ -1,0 +1,33 @@
+name: Test
+
+on:
+  push:
+    branches: ['master']
+    tags: ['*']
+  pull_request:
+    branches: ['master']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Test script.ps1
+        run: ./script.ps1
+        working-directory: test
+
+  release:
+    if: ${{github.ref_type == 'tag'}}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Release Tag
+        run: gh release create --notes-from-tag
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

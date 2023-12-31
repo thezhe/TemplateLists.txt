@@ -1,3 +1,3 @@
-# script-action-template
+# script-template
 
-GitHub Actions wrapper of a script that runs in both Bash and PowerShell.
+A script that can run in Bash and PowerShell.
