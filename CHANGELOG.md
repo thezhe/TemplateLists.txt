@@ -4,5 +4,6 @@
 
 ### Added
 
-- script.ps1
-- .github/workflows/test.yml
+- `script.ps1`
+- `.github/workflows/test.yml`
+- `test` directory
