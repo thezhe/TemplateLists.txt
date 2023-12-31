@@ -27,6 +27,7 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4.1.1
       - name: Release Tag
         run: gh release create --notes-from-tag *.ps1
         env:
