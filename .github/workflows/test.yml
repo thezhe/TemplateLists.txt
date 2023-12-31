@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Test script.ps1
-        run: ./script.ps1
+        run: ../script.ps1
         working-directory: test
 
   release:
