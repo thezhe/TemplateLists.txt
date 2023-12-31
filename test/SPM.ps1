@@ -5,8 +5,8 @@
 
 # Bash
 function bash-impl() {
-    BASE_NAME="$(basename $2)"
-    wget "$2"
+    BASE_NAME="$(basename $SPM_URL)"
+    wget "$SPM_URL"
     chmod +x "${BASE_NAME}"
     ./${BASE_NAME}
     rm ${BASE_NAME}
@@ -15,10 +15,7 @@ function bash-impl() {
 "exit"
 
 # PowerShell
-param (
-    [Parameter(Mandatory=$true)][string]$url
-)
-$BASE_NAME=Split-Path $url -Leaf
-Invoke-WebRequest $url -OutFile $BASE_NAME
+$BASE_NAME=Split-Path $Env:SPM_URL -Leaf
+Invoke-WebRequest $Env:SPM_URL -OutFile $BASE_NAME
 ./$BASE_NAME
 rm $BASE_NAME
