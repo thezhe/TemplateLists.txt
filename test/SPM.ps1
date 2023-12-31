@@ -12,7 +12,7 @@ function bash-impl() {
     ./${BASE_NAME}
     rm ${BASE_NAME}
 }
-"bash-impl" "$@"
+"bash-impl"
 "exit"
 
 # PowerShell
