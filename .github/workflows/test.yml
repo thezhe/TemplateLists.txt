@@ -29,6 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Release Tag
-        run: gh release create --notes-from-tag *.ps1
+        run: gh release create --notes-from-tag ${{github.ref_name}} *.ps1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
