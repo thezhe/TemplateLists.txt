@@ -19,9 +19,6 @@ jobs:
       - name: Test
         run: cmake -P ${{github.workspace}}/template.cmake
         working-directory: test
-    #   - name: Test a release version
-    #     run: cmake -P ${{github.workspace}}/cmake/wrun.cmake
-    #     working-directory: test
   release:
     if: ${{github.ref_type == 'tag'}}
     needs: build

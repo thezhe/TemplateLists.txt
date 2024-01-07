@@ -1,10 +1,9 @@
 # Changelog
 
-## v1.0.0 - 2024/01/XX
+## v0.9.0 - 2024/01/07
 
 ### Added
 
 - `template.cmake`
-- `cmake/wrun.cmake`
-- `.github/workflows/main.yml`
 - `test/`
+- `.github/workflows/main.yml`
