@@ -1,7 +1,7 @@
-# script-template
+# template.cmake
 
-A Bash/PowerShell script.
+A self-contained CMake script.
 
 ## Usage
 
-See `.github/workflows/test.yml`.
+See `.github/workflows/main.yml`.

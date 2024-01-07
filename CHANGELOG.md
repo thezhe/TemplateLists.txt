@@ -1,15 +1,10 @@
 # Changelog
 
-## v1.0.1 - 2023/12/30
+## v1.0.0 - 2024/01/XX
 
 ### Added
 
-- `.github/dependabot.yml`
-
-## v1.0.0 - 2023/12/30
-
-### Added
-
-- `script.ps1`
-- `.github/workflows/test.yml`
-- `test` directory
+- `template.cmake`
+- `cmake/wrun.cmake`
+- `.github/workflows/main.yml`
+- `test/`
