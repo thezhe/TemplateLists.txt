@@ -16,9 +16,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v4.1.1
-      - name: Test
-        run: cmake -P ${{github.workspace}}/template.cmake
-        working-directory: test
+      - name: CTest
+        run: cmake -B build && ctest --output-on-failure --test-dir build
   release:
     if: ${{github.ref_type == 'tag'}}
     needs: build
@@ -28,6 +27,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Release Tag
-        run: gh release create ${{github.ref_name}} -n ${{github.ref_name}} template.cmake
+        run: gh release create ${{github.ref_name}} -n ${{github.ref_name}}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
