@@ -3,7 +3,7 @@ CI entrypoint.
 
     cmake -B build && ctest -C Release --output-on-failure --test-dir build
 
-Precondition: ./CMakeLists.txt, ./template.cmake, and ./CTest.txt exist.
+Precondition: ./template.cmake and ./CTest.txt exist.
 ]]
 
 # Project
