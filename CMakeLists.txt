@@ -9,7 +9,7 @@ enable_testing()
 project(template.cmake)
 # Test
 add_test(
-    NAME CTest
+    NAME testexec
     COMMAND "${CMAKE_COMMAND}" -P "template.cmake"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 )
