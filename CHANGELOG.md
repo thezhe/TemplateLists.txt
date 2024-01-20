@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.0 - 2024/01/20
+
+### Changed
+
+- move `test.txt` to `test/`
+- add `-j 4` to ctest command in `.github/workflows/main.yml`
+- lower_case local vars
+
 ## v0.9.1 - 2024/01/14
 
 ### Added

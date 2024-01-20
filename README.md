@@ -4,4 +4,8 @@ A self-contained CMake script.
 
 ## Usage
 
-See `template.cmake`.
+Modify the following files:
+
+- `template.cmake`
+- `CMakeLists.txt` (test driver)
+- `CHANGELOG.md`
