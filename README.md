@@ -6,6 +6,6 @@ A self-contained CMake script.
 
 Modify the following files:
 
-- `template.cmake`
+- `template.cmake` (entrypoint)
 - `CMakeLists.txt` (test driver)
 - `CHANGELOG.md`
