@@ -4,9 +4,15 @@ Template for a [CMake script](https://cmake.org/cmake/help/latest/manual/cmake.1
 
 ## Features
 
-- `template.cmake` - entrypoint
 - `CMakeLists.txt` - test driver
+- `template.cmake` - entrypoint
 
 ## Usage
 
 `cmake -P template.cmake`
+
+## Versioning
+
+- SemVer
+- Stable tags
+- Unstable single branch
