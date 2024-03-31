@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
@@ -17,7 +17,7 @@ jobs:
           TEST: 'TEST'
         run: cmake -B build && ctest -C Release --output-on-failure --test-dir build
   release:
-    if: ${{github.ref_type == 'tag'}}
+    if: ${{ github.ref_type == 'tag' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -25,6 +25,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Release Tag
-        run: gh release create ${{github.ref_name}} -n ${{github.ref_name}}
+        run: gh release create ${{ github.ref_name }} -n ${{ github.ref_name }}
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
