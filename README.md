@@ -13,5 +13,5 @@ Template for a [CMake script](https://cmake.org/cmake/help/latest/manual/cmake.1
 
 ## Versioning
 
-- Stable SemVer tags
-- Unstable single `main` branch
+- Tags - stable SemVer
+- `main` branch - unstable
