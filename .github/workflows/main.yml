@@ -25,7 +25,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.2
       - name: Release Tag
         run: gh release create ${{github.ref_name}} -n ${{github.ref_name}}
         env:
