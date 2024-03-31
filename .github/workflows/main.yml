@@ -15,16 +15,4 @@ jobs:
       - name: CTest
         env:
           TEST: 'TEST'
-        run: cmake -B build && ctest -C Release --output-on-failure --test-dir build
-  deploy:
-    if: ${{ github.ref_type == 'tag' }}
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-      - name: Release Tag
-        run: gh release create ${{ github.ref_name }} -n ${{ github.ref_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cmake -B build && ctest --output-on-failure --test-dir build
