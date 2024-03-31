@@ -1,12 +1,19 @@
 # Changelog
 
+## v1.1.1 - 2024/03/31
+
+### Changed
+
+- Remove GitHub releases
+- Refactor docs and devcontainer
+
 ## v1.1.0 - 2024/03/30
 
 ### Changed
 
-- Unit test validates environment variable
-- Removed `-j 4` option for Ctest step in `.github/workflows/main.yml`
-- Removed `test/text.txt`
+- Validate environment variable in unit test
+- Remove `-j 4` option for Ctest step in `.github/workflows/main.yml`
+- Remove `test/text.txt`
 
 ## v1.0.0 - 2024/01/27
 
@@ -14,7 +21,7 @@
 
 - Move `test.txt` to `test/text.txt`
 - Add `-j 4` to CTest step in `.github/workflows/main.yml`
-- lower_case local vars and naming conventions
+- Name local vars in lower_case
 
 ## v0.9.1 - 2024/01/14
 
