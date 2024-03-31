@@ -4,8 +4,6 @@ Template for a [CMake script](https://cmake.org/cmake/help/latest/manual/cmake.1
 
 ## Features
 
-### Files
-
 - `template.cmake` - entrypoint
 - `CMakeLists.txt` - test driver
 

@@ -16,7 +16,7 @@ jobs:
         env:
           TEST: 'TEST'
         run: cmake -B build && ctest -C Release --output-on-failure --test-dir build
-  release:
+  deploy:
     if: ${{ github.ref_type == 'tag' }}
     needs: build
     runs-on: ubuntu-latest
