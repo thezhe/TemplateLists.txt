@@ -1,13 +1,13 @@
 #[[
-A self-contained CMake script. Reads ./test.txt.
+Assert `$ENV{TEST}` equals `"TEST"`
 
-    cmake -P <path-to-template.cmake>
-
-Fatal if: reading fails
+    cmake -P template.cmake
 ]]
 
-# See `COMMAND_ERROR_IS_FATAL` in `execute_process`
+# Settings
 cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
-# Read
-file(READ "text.txt" text_txt)
-message(STATUS "${text_txt}")
+# Validate
+string(COMPARE NOTEQUAL "$ENV{TEST}" "TEST" exit_failure)
+if(exit_failure)
+    message(FATAL_ERROR "\$ENV{TEST} == \"$ENV{TEST}\" != \"TEST\"")
+endif()

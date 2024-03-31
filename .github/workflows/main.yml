@@ -1,12 +1,8 @@
-name: Main
+name: main
 
 on:
   push:
-    branches: ['master']
-    tags: ['*']
   pull_request:
-    branches: ['master']
-  workflow_dispatch:
 
 jobs:
   build:
@@ -15,9 +11,13 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
-      - uses: actions/checkout@v4.1.1
       - name: CTest
-        run: cmake -B build && ctest -j 4 -C Release --output-on-failure --test-dir build
+        env:
+          TEST: 'TEST'
+        run: |
+          git clone --depth 1 -b master https://github.com/thezhe/template.cmake.git
+          cd template.cmake
+          cmake -B build && ctest -C Release --output-on-failure --test-dir build
   release:
     if: ${{github.ref_type == 'tag'}}
     needs: build
