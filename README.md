@@ -1,6 +1,6 @@
 # TemplateLists.txt
 
-Pure configure-time CMake project template
+Purely configure-time `CMakeLists.txt` template
 
 ## Versioning
 
