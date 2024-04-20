@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.0 - 2024/04/19
+
+## Changed
+
+- Move all code to CMakeLists.txt
+
 ## v1.1.1 - 2024/03/31
 
 ### Changed

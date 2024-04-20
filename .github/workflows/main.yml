@@ -12,7 +12,5 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v4
-      - name: CTest
-        env:
-          TEST: 'TEST'
-        run: cmake -B build && ctest -C Release --output-on-failure --test-dir build
+      - name: Test
+        run: cmake -B build

@@ -1,9 +1,14 @@
-# Settings
+include_guard(GLOBAL)
 cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
-enable_testing()
-# Project
-set(script_name "template.cmake")
-project("${script_name}")
+# Module
+project("template.cmake")
+# Template function
+function(template)
+    message(STATUS "Hello world!")
+endfunction()
+# Skip if module
+if(NOT PROJECT_IS_TOP_LEVEL)
+    return()
+endif()
 # Test
-add_test(NAME "main-test" COMMAND "${CMAKE_COMMAND}" -P
-                                  "${CMAKE_SOURCE_DIR}/${script_name}")
+template()
