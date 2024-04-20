@@ -1,6 +1,6 @@
-# TemplateLists.txt
+# templatelists
 
-Purely configure-time `CMakeLists.txt` template
+Purely configure-time `CMakeLists.txt`-as-a-module template
 
 ## Versioning
 
