@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.1.0 - 2024/04/19
+## v2.1.0 - 2024/04/29
 
 - Change name to `templatelists`
 
