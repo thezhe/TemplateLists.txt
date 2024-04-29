@@ -1,12 +1,20 @@
 # Changelog
 
+## v2.1.1 - 2024/04/29
+
+### Changed
+
+- Refactor documents
+
 ## v2.1.0 - 2024/04/29
 
-- Change name to `templatelists`
+### Changed
+
+- Name to `templatelists`
 
 ## v2.0.0 - 2024/04/19
 
-## Changed
+### Changed
 
 - Move all code to CMakeLists.txt
 
